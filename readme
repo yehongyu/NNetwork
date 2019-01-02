@@ -1,0 +1,24 @@
+
+lib:
+download eigen
+cp -a eigen/Eigen  /usr/local/include/
+
+data:
+download mnist data set
+gzip -d train-images-idx3-ubyte.gz
+gzip -d train-labels-idx1-ubyte.gz
+gzip -d t10k-images-idx3-ubyte.gz
+gzip -d t10k-labels-idx1-ubyte.gz
+
+compile:
+g++ -O2 -DNDEBUG main.cpp NNetwork.cpp -v -o nn_train.out
+
+compile: by Makefile
+make all
+
+execute:
+./nn_train.out
+
+clean: by Makefile
+make clean
+
